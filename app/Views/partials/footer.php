@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mini-CRM</title>
-</head>
-<body>
-    <footer>
-        
-    </footer>
-</body>
-</html>
+<footer class="crm-footer">
+    <div>
+        <p>&copy; 2026 CRM-Nikoo.Inc. Tous droits réservés.</p>
+    </div>
+</footer>

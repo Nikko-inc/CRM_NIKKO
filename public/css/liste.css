@@ -1,0 +1,208 @@
+/* --- Contenu principal --- */
+main {
+    flex: 1;            /* sans effet sauf si le body est en colonne flex (footer collé en bas) */
+    width: 100%;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+main h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 1.5rem;
+}
+
+.message-vide {
+    color: #718096;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* --- Formulaire de recherche et filtre --- */
+.form-recherche {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+    background-color: #ffffff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+}
+
+.form-recherche input,
+.form-recherche select {
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    padding: 0.65rem 0.75rem;
+    font-size: 0.95rem;
+    color: #2d3748;
+    background-color: #ffffff;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-recherche input {
+    flex: 1;
+}
+
+.form-recherche input:focus,
+.form-recherche select:focus {
+    border-color: #3182ce;
+    box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.15);
+}
+
+.btn-principal {
+    background-color: #3182ce;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.65rem 1.25rem;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-principal:hover {
+    background-color: #2b6cb0;
+}
+
+/* --- Tableau des clients --- */
+.table-conteneur {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    margin-bottom: 2rem;
+    overflow-x: auto;
+}
+
+.table-clients {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-clients tr {
+    transition: background-color 0.15s ease;
+}
+
+.table-clients tr:not(:last-child) {
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.table-clients tr:hover {
+    background-color: #f8fafc;
+}
+
+.table-clients td {
+    padding: 1rem 1.25rem;
+    font-size: 0.95rem;
+    color: #2d3748;
+    vertical-align: middle;
+}
+
+.lien-voir {
+    color: #3182ce;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.lien-voir:hover {
+    text-decoration: underline;
+}
+
+
+/* RESPONSIVE MEDIA QUERIES (inchangées, seuls les sélecteurs ont changé) */
+
+/* 1. Petits mobiles (320px - 480px) */
+@media screen and (min-width: 320px) and (max-width: 480px) {
+    main {
+        padding: 0 0.75rem;
+        margin: 1rem auto;
+    }
+
+    .form-recherche {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .form-recherche input,
+    .form-recherche select,
+    .form-recherche button {
+        width: 100%;
+    }
+
+    /* Chaque ligne devient sa propre carte : le conteneur n'a plus besoin d'en être une */
+    .table-conteneur {
+        background: none;
+        border: none;
+        box-shadow: none;
+        overflow: visible;
+    }
+
+    .table-clients,
+    .table-clients tbody,
+    .table-clients tr,
+    .table-clients td {
+        display: block;
+        width: 100%;
+    }
+
+    .table-clients tr {
+        padding: 0.75rem;
+        margin-bottom: 0.75rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        background-color: #ffffff;
+    }
+
+    .table-clients td {
+        padding: 0.35rem 0;
+        border: none;
+    }
+}
+
+/* 2. Grands mobiles / Petites tablettes (481px - 767px) */
+@media screen and (min-width: 481px) and (max-width: 767px) {
+    .form-recherche {
+        flex-direction: column;
+    }
+
+    .form-recherche input,
+    .form-recherche select,
+    .form-recherche button {
+        width: 100%;
+    }
+}
+
+/* 3. Tablettes en portrait (768px - 1024px) */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    main {
+        max-width: 720px;
+    }
+}
+
+/* 4. Tablettes en paysage (768px - 1024px et orientation: landscape) */
+@media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    main {
+        max-width: 900px;
+    }
+}
+
+/* 5. Petits écrans de bureau / Laptops (1025px - 1280px) */
+@media screen and (min-width: 1025px) and (max-width: 1280px) {
+    main {
+        max-width: 1000px;
+    }
+}
+
+/* 6. Écrans de bureau standards et larges (1281px et plus) */
+@media screen and (min-width: 1281px) {
+    main {
+        max-width: 1200px;
+    }
+}

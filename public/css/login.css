@@ -1,0 +1,168 @@
+/* --- Styles de base et Reset minimaliste --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #0f172a; /* Fond élégant (bleu-nuit profond) */
+    color: #334155;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+/* --- Carte du formulaire de connexion --- */
+form {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 400px;
+}
+
+/* --- Titre --- */
+form h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* --- Message d'erreur --- */
+form p {
+    color: #ef4444;
+    font-size: 0.875rem;
+    background-color: #fef2f2;
+    border: 1px solid #fee2e2;
+    padding: 0.75rem;
+    border-radius: 6px;
+    margin-bottom: 1.25rem;
+    text-align: center;
+}
+
+/* --- Champs de formulaire --- */
+form label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #475569;
+    margin-bottom: 0.35rem;
+}
+
+form input[type="email"],
+form input[type="password"] {
+    width: 100%;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 0.75rem;
+    font-size: 0.95rem;
+    outline: none;
+    color: #1e293b;
+    background-color: #f8fafc;
+    margin-bottom: 1.25rem;
+    transition: all 0.2s ease;
+}
+
+form input[type="email"]:focus,
+form input[type="password"]:focus {
+    outline: none;
+    border-color: #6366f1;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+/* --- Bouton de soumission --- */
+form button[type="submit"] {
+    width: 100%;
+    background-color: #4f46e5; /* Indigo moderne et professionnel */
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+form button[type="submit"]:hover {
+    background-color: #4338ca;
+}
+
+form button[type="submit"]:active {
+    transform: scale(0.98);
+}
+
+/* --- Message d'erreur --- */
+.erreur {
+    color: #ef4444;
+    font-size: 0.875rem;
+    background-color: #fef2f2;
+    border: 1px solid #fee2e2;
+    padding: 0.75rem;
+    border-radius: 6px;
+    margin-bottom: 1.25rem;
+    text-align: center;
+}
+
+
+/* RESPONSIVE MEDIA QUERIES */
+
+/* 1. Petits mobiles (320px - 480px) */
+@media screen and (min-width: 320px) and (max-width: 480px) {
+    body {
+        padding: 0.75rem;
+    }
+    
+    form {
+        padding: 1.5rem;
+        border-radius: 8px;
+    }
+
+    form h1 {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+    }
+}
+
+/* 2. Grands mobiles / Petites tablettes (481px - 767px) */
+@media screen and (min-width: 481px) and (max-width: 767px) {
+    form {
+        padding: 2rem;
+    }
+}
+
+/* 3. Tablettes en portrait (768px - 1024px) */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    form {
+        max-width: 420px;
+    }
+}
+
+/* 4. Tablettes en paysage (768px - 1024px and orientation: landscape) */
+@media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    body {
+        padding: 1.5rem;
+    }
+}
+
+/* 5. Petits écrans de bureau / Laptops (1025px - 1280px) */
+@media screen and (min-width: 1025px) and (max-width: 1280px) {
+    form {
+        max-width: 420px;
+    }
+}
+
+/* 6. Écrans de bureau standards et larges (1281px et plus) */
+@media screen and (min-width: 1281px) {
+    form {
+        max-width: 440px;
+    }
+}

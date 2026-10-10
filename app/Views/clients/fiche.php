@@ -1,45 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mini-CRM</title>
+    <title>CRM-Nikko.Inc</title>
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/fiche.css">
 </head>
 <body>
     <?php require __DIR__ . '/../partials/header.php'; ?>
 
     <main>
-        <h1 class="text-2xl font-bold mb-4"><?= e($client['nom']) ?></h1>
-        <p class="text-gray-500 mb-6"><?= e($client['email']) ?></p>
+        <h1><?= e($client['nom']) ?></h1>
+        <p class="fiche-email"><?= e($client['email']) ?></p>
 
-        <form method="POST" action="/clients/supprimer"
+        <form class="form-supprimer-client" method="POST" action="/clients/supprimer"
             onsubmit="return confirm('Supprimer ce client et toutes ses notes ?')">
             <input type="hidden" name="csrf_token" value="<?= genererJetonCsrf() ?>">
             <input type="hidden" name="id" value="<?= (int) $client['id'] ?>">
-            <button type="submit" class="text-red-600 text-sm">Supprimer ce client</button>
+            <button type="submit" class="btn-supprimer">Supprimer ce client</button>
         </form>
-        <a href="/clients/kanban" class="text-sm text-blue-600 hover:underline">← Retour au pipeline</a>
 
-        <form method="POST" action="/interactions" class="mb-6">
+        <a href="/clients/kanban" class="lien-retour">← Retour au pipeline</a>
+
+        <form class="form-note" method="POST" action="/interactions">
             <input type="hidden" name="csrf_token" value="<?= genererJetonCsrf() ?>">
-
-            <input type="hidden" name="client_id" value="<?= $client['id'] ?>">
-            <textarea name="note" class="w-full border rounded p-2" placeholder="Nouvelle note..."></textarea>
-            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded mt-2">Ajouter la note</button>
+            <input type="hidden" name="client_id" value="<?= (int) $client['id'] ?>">
+            <textarea name="note" placeholder="Nouvelle note..."></textarea>
+            <button type="submit" class="btn-principal">Ajouter la note</button>
         </form>
 
-        <div class="space-y-3">
+        <div class="liste-notes">
             <?php foreach ($interactions as $interaction): ?>
-                <div class="bg-white rounded p-3 shadow-sm">
-                    <p><?= nl2br(e($interaction['note'])) ?></p>
-                    <p class="text-xs text-gray-400 mt-1"><?= e($interaction['date_interaction']) ?></p>
+                <div class="note">
+                    <p class="note-texte"><?= nl2br(e($interaction['note'])) ?></p>
+                    <p class="note-date"><?= e($interaction['date_interaction']) ?></p>
 
-                    <form method="POST" action="/interactions/supprimer"
+                    <form class="form-supprimer-note" method="POST" action="/interactions/supprimer"
                         onsubmit="return confirm('Supprimer cette note ?')">
                         <input type="hidden" name="csrf_token" value="<?= genererJetonCsrf() ?>">
                         <input type="hidden" name="id" value="<?= (int) $interaction['id'] ?>">
                         <input type="hidden" name="client_id" value="<?= (int) $client['id'] ?>">
-                        <button type="submit" class="text-xs text-red-600 mt-1">Supprimer</button>
+                        <button type="submit" class="btn-supprimer">Supprimer</button>
                     </form>
                 </div>
             <?php endforeach; ?>

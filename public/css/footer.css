@@ -1,0 +1,61 @@
+/* --- Styles de base du Footer --- */
+.crm-footer {
+    background-color: #ffffff;
+    border-top: 1px solid #e1e4e8;
+    padding: 1.25rem 1.5rem;
+    margin-top: 2rem;
+    color: #718096;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.crm-footer div {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+/* RESPONSIVE MEDIA QUERIES  */
+
+/* 1. Petits mobiles (320px - 480px) */
+@media screen and (min-width: 320px) and (max-width: 480px) {
+    .crm-footer {
+        padding: 1rem;
+        font-size: 0.85rem;
+    }
+}
+
+/* 2. Grands mobiles / Petites tablettes (481px - 767px) */
+@media screen and (min-width: 481px) and (max-width: 767px) {
+    .crm-footer {
+        padding: 1.15rem 1.25rem;
+    }
+}
+
+/* 3. Tablettes en portrait (768px - 1024px) */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .crm-footer {
+        padding: 1.25rem 2rem;
+    }
+}
+
+/* 4. Tablettes en paysage (768px - 1024px and orientation: landscape) */
+@media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .crm-footer {
+        padding: 1rem 2rem;
+    }
+}
+
+/* 5. Petits écrans de bureau / Laptops (1025px - 1280px) */
+@media screen and (min-width: 1025px) and (max-width: 1280px) {
+    .crm-footer div {
+        max-width: 960px;
+    }
+}
+
+/* 6. Écrans de bureau standards et larges (1281px et plus) */
+@media screen and (min-width: 1281px) {
+    .crm-footer div {
+        max-width: 1200px;
+    }
+}

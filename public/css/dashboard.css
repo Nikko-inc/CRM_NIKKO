@@ -1,0 +1,150 @@
+/* --- Contenu principal --- */
+main {
+    flex: 1;            /* sans effet sauf si le body est en colonne flex (footer collé en bas) */
+    width: 100%;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+main h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 1.5rem;
+}
+
+main h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #4a5568;
+    margin-bottom: 0.75rem;
+}
+
+/* --- Grille des deux statistiques du haut --- */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+/* --- Carte blanche (statistiques, répartition, conversion) --- */
+.carte {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    padding: 1.5rem;
+}
+
+.carte-label {
+    font-size: 0.875rem;
+    color: #718096;
+    margin-bottom: 0.35rem;
+}
+
+.carte-valeur {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2d3748;
+}
+
+.carte-valeur--vert { color: #38a169; }
+.carte-valeur--bleu { color: #3182ce; }
+
+/* --- Répartition par étape --- */
+.repartition {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.repartition-entete {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #4a5568;
+    margin-bottom: 0.35rem;
+}
+
+.barre {
+    background-color: #edf2f7;
+    border-radius: 9999px;
+    height: 0.75rem;
+    width: 100%;
+    overflow: hidden;
+}
+
+.barre-remplissage {
+    background-color: #3182ce;
+    height: 100%;
+    border-radius: 9999px;
+    transition: width 0.3s ease;
+}
+
+/* --- Bloc taux de conversion --- */
+.carte-conversion {
+    margin-top: 1.5rem;
+}
+
+
+/* RESPONSIVE MEDIA QUERIES */
+
+/* 1. Petits mobiles (320px - 480px) */
+@media screen and (min-width: 320px) and (max-width: 480px) {
+    main {
+        padding: 0 0.75rem;
+        margin: 1rem auto;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .carte {
+        padding: 1.15rem;
+    }
+
+    .carte-valeur {
+        font-size: 1.6rem;
+    }
+}
+
+/* 2. Grands mobiles / Petites tablettes (481px - 767px) */
+@media screen and (min-width: 481px) and (max-width: 767px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 3. Tablettes en portrait (768px - 1024px) */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    main {
+        max-width: 720px;
+    }
+}
+
+/* 4. Tablettes en paysage (768px - 1024px et orientation: landscape) */
+@media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    main {
+        max-width: 900px;
+    }
+}
+
+/* 5. Petits écrans de bureau / Laptops (1025px - 1280px) */
+@media screen and (min-width: 1025px) and (max-width: 1280px) {
+    main {
+        max-width: 1000px;
+    }
+}
+
+/* 6. Écrans de bureau standards et larges (1281px et plus) */
+@media screen and (min-width: 1281px) {
+    main {
+        max-width: 1200px;
+    }
+}

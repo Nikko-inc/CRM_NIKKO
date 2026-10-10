@@ -1,0 +1,250 @@
+/* --- Contenu principal --- */
+main {
+    flex: 1;            /* sans effet sauf si le body est en colonne flex (footer collé en bas) */
+    width: 100%;
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+main h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 1.5rem;
+}
+
+/* --- Grille du Kanban (4 colonnes) --- */
+.kanban {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    align-items: start;
+    margin-bottom: 2rem;
+}
+
+/* Colonne d'étape = zone de dépôt.
+   La hauteur minimale garde une colonne vide assez grande pour y déposer une carte. */
+.colonne {
+    background-color: #edf2f7;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    min-height: 400px;
+}
+
+.colonne-titre {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #4a5568;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #cbd5e0;
+}
+
+.colonne-cartes {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* --- Carte client --- */
+.carte-client {
+    background-color: #ffffff;
+    border-radius: 6px;
+    padding: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    cursor: move;
+    transition: box-shadow 0.2s ease, transform 0.1s ease;
+}
+
+.carte-client:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.carte-client h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 0.25rem;
+}
+
+.carte-email {
+    font-size: 0.85rem;
+    color: #718096;
+    margin-bottom: 0.5rem;
+}
+
+.carte-lien {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: #3182ce;
+    text-decoration: none;
+    margin-top: 0.25rem;
+}
+
+.carte-lien:hover {
+    text-decoration: underline;
+}
+
+/* --- Bouton principal ("+ Nouveau client" et "Créer") --- */
+.zone-ajout {
+    margin-bottom: 1.5rem;
+}
+
+.btn-principal {
+    background-color: #3182ce;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.6rem 1.25rem;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-principal:hover {
+    background-color: #2b6cb0;
+}
+
+/* --- Modale d'ajout de client --- */
+/* Alpine (x-show) ajoute display:none en ligne pour la cacher, et le retire pour l'afficher :
+   le display:flex ci-dessous s'applique alors. N'ajoute jamais !important ici. */
+.modal-fond {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    z-index: 50;
+}
+
+.modal {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 400px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.modal h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 1rem;
+}
+
+.modal input {
+    width: 100%;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    padding: 0.65rem;
+    font-size: 0.95rem;
+    color: #2d3748;
+    margin-bottom: 0.75rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.modal input:focus {
+    border-color: #3182ce;
+    box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.15);
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.btn-annuler {
+    background: none;
+    border: none;
+    color: #718096;
+    font-family: inherit;
+    font-size: 0.95rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+.btn-annuler:hover {
+    background-color: #edf2f7;
+}
+
+.erreur {
+    color: #e53e3e;
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+}
+
+
+/* RESPONSIVE MEDIA QUERIES (inchangées, seuls les sélecteurs ont changé) */
+
+/* 1. Petits mobiles (320px - 480px) */
+@media screen and (min-width: 320px) and (max-width: 480px) {
+    main {
+        padding: 0 0.75rem;
+        margin: 1rem auto;
+    }
+
+    .kanban {
+        grid-template-columns: 1fr;
+    }
+
+    .modal {
+        max-width: 90%;
+        padding: 1.25rem;
+    }
+}
+
+/* 2. Grands mobiles / Petites tablettes (481px - 767px) */
+@media screen and (min-width: 481px) and (max-width: 767px) {
+    .kanban {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 3. Tablettes en portrait (768px - 1024px) */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .kanban {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 4. Tablettes en paysage (768px - 1024px et orientation: landscape) */
+@media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .kanban {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 5. Petits écrans de bureau / Laptops (1025px - 1280px) */
+@media screen and (min-width: 1025px) and (max-width: 1280px) {
+    .kanban {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    main {
+        max-width: 1200px;
+    }
+}
+
+/* 6. Écrans de bureau standards et larges (1281px et plus) */
+@media screen and (min-width: 1281px) {
+    .kanban {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    main {
+        max-width: 1400px;
+    }
+}

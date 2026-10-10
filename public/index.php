@@ -34,7 +34,7 @@ $router = new Router();
 
 $router->ajouter('GET', '/clients/kanban', [ClientController::class, 'kanban']);
 $router->ajouter('GET', '/dashboard', [DashboardController::class, 'afficher']);
-$router->ajouter('GET', '/clients', [ClientController::class, 'liste']);
+$router->ajouter('GET', '/clients', [ClientController::class, 'Rliste']);
 $router->ajouter('GET', '/clients/fiche', [ClientController::class, 'fiche']);
 
 $router->ajouter('POST', '/clients', [ClientController::class, 'creer']);
