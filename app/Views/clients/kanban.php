@@ -38,6 +38,16 @@
                                     <a href="/clients/fiche?id=<?= (int) $client['id'] ?>"
                                         draggable="false"
                                         class="carte-lien">Voir la fiche →</a>
+                                        <select class="carte-etape"
+                                                aria-label="Changer l'étape de <?= e($client['nom']) ?>"
+                                                @change="deplacer(<?= (int) $client['id'] ?>, $event.target.value)">
+                                            <?php foreach ($etapes as $e): ?>
+                                                <option value="<?= (int) $e['id'] ?>"
+                                                    <?= (int) $e['id'] === (int) $etape['id'] ? 'selected' : '' ?>>
+                                                    <?= e($e['nom']) ?>
+                                                </option>
+                                            <?php endforeach; ?>
+                                        </select>
                                 </div>
                             <?php endforeach; ?>
                         </div>
@@ -90,12 +100,18 @@
             return {
                 clientDeplaceId: null,
 
+                // Glisser-déposer (ordinateur)
                 deposer(nouvelleEtapeId) {
-                    if (!this.clientDeplaceId) return;
+                    this.deplacer(this.clientDeplaceId, nouvelleEtapeId);
+                },
+
+                // Changement d'étape par la liste déroulante (fonctionne au doigt)
+                deplacer(clientId, nouvelleEtapeId) {
+                    if (!clientId) return;
 
                     const jeton = document.querySelector('meta[name="csrf-token"]').content;
                     const donnees = new URLSearchParams({
-                        id: this.clientDeplaceId,
+                        id: clientId,
                         etape_id: nouvelleEtapeId,
                         csrf_token: jeton
                     });
